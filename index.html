@@ -1,10 +1,13 @@
 ```html
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Só Nós Dois ❤️</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,8 +15,9 @@
 
     <div class="app">
 
-        <!-- TELA INICIAL -->
+        <!-- INÍCIO -->
         <section id="inicio" class="tela ativa">
+
             <div class="coracao">❤️</div>
 
             <h1>Só Nós Dois</h1>
@@ -22,18 +26,60 @@
                 Um jogo feito para vocês dois.
             </p>
 
-            <button onclick="iniciarJogo()">
+            <button onclick="abrirCategorias()">
                 Começar ❤️
             </button>
+
         </section>
 
 
-        <!-- TELA DO JOGO -->
+        <!-- CATEGORIAS -->
+        <section id="categorias" class="tela">
+
+            <h1>Escolha o jogo</h1>
+
+            <p>Que tal começar?</p>
+
+            <div class="categorias">
+
+                <button onclick="iniciarJogo('conhecendo')">
+                    💕 Conhecendo vocês
+                </button>
+
+                <button onclick="iniciarJogo('diversao')">
+                    😂 Diversão
+                </button>
+
+                <button onclick="iniciarJogo('desafios')">
+                    🎮 Desafios
+                </button>
+
+                <button onclick="iniciarJogo('romantico')">
+                    ❤️ Romântico
+                </button>
+
+            </div>
+
+            <button class="voltar" onclick="voltarInicio()">
+                Voltar
+            </button>
+
+        </section>
+
+
+        <!-- JOGO -->
         <section id="jogo" class="tela">
 
             <div class="topo">
-                <span id="categoria">Categoria</span>
-                <span id="numero">1</span>
+
+                <span id="categoria">
+                    Categoria
+                </span>
+
+                <span id="numero">
+                    1/1
+                </span>
+
             </div>
 
             <div class="card">
@@ -48,8 +94,8 @@
 
             </div>
 
-            <button class="voltar" onclick="voltarInicio()">
-                Voltar
+            <button class="voltar" onclick="abrirCategorias()">
+                Escolher outra categoria
             </button>
 
         </section>
@@ -59,5 +105,6 @@
     <script src="script.js"></script>
 
 </body>
+
 </html>
 ```
