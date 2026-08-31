@@ -1,464 +1,390 @@
-```css
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+```javascript
+/* =====================================
+   PERGUNTAS GRATUITAS
+===================================== */
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
+const perguntas = {
 
-    min-height: 100vh;
+    conhecendo: [
 
-    background:
-        linear-gradient(
-            135deg,
-            #ff416c,
-            #8e2de2
-        );
+        "Qual foi o momento em que você percebeu que gostava de mim?",
 
-    color: white;
+        "Qual lembrança nossa você gostaria de reviver?",
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        "Qual é uma coisa que você admira em mim?",
 
+        "O que torna nossa história especial?",
 
-.app {
-    width: 100%;
-    max-width: 480px;
+        "Qual foi um dos momentos mais engraçados que vivemos juntos?",
 
-    min-height: 100vh;
+        "Qual lugar você gostaria de conhecer comigo?",
 
-    padding: 25px;
+        "Qual coisa simples que fazemos juntos você mais gosta?"
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+    ],
 
 
-.tela {
-    display: none;
+    diversao: [
 
-    width: 100%;
+        "Quem dos dois é mais provável de começar uma dança do nada?",
 
-    text-align: center;
+        "Se pudéssemos viajar amanhã, para onde você iria comigo?",
 
-    animation: aparecer 0.4s ease;
-}
+        "Qual filme ou série combina com a nossa história?",
 
+        "Quem dos dois faria a maior besteira durante uma viagem?",
 
-.tela.ativa {
-    display: block;
-}
+        "Se nossa história fosse um filme, qual seria o título?",
 
+        "Quem demora mais para escolher o que assistir?",
 
-/* TÍTULOS */
+        "Se tivéssemos um dia inteiro livre, o que você faria comigo?"
 
-h1 {
-    font-size: 40px;
-    margin-bottom: 10px;
-}
+    ],
 
 
-p {
-    font-size: 17px;
 
-    line-height: 1.5;
+/* =====================================
+   20 DESAFIOS PREMIUM
+===================================== */
 
-    opacity: 0.9;
+    desafiosPremium: [
 
-    margin-bottom: 30px;
-}
+        "Cada um diga três qualidades que admira no outro.",
 
+        "Contem juntos uma lembrança que sempre faz vocês sorrirem.",
 
-/* CORAÇÃO */
+        "Cada um escolha uma música que lembre a história de vocês.",
 
-.coracao {
-    font-size: 75px;
+        "Façam uma competição para ver quem consegue fazer o outro rir primeiro.",
 
-    margin-bottom: 20px;
+        "Cada um conte um sonho que gostaria de realizar no futuro.",
 
-    animation: pulsar 1.5s infinite;
-}
+        "Escolham um lugar onde gostariam de fazer uma viagem juntos.",
 
+        "Cada um diga uma coisa que gostaria de aprender junto.",
 
-.coracao.pequeno {
-    font-size: 45px;
+        "Inventem um apelido divertido um para o outro.",
 
-    margin-bottom: 5px;
-}
+        "Cada um conte qual foi seu primeiro pensamento quando conheceu o outro.",
 
+        "Façam uma lista de cinco coisas que vocês querem experimentar juntos.",
 
-.premium-icon {
-    font-size: 65px;
+        "Cada um escolha uma memória favorita da relação e explique o motivo.",
 
-    margin-bottom: 15px;
+        "Criem juntos um nome engraçado para um filme sobre a história de vocês.",
 
-    animation: pulsar 1.5s infinite;
-}
+        "Cada um diga uma coisa que o outro faz e que sempre melhora seu dia.",
 
+        "Imaginem que vocês ganharam uma viagem: decidam juntos para onde iriam.",
 
-/* BOTÕES */
+        "Cada um conte uma coisa pela qual é grato na relação.",
 
-button {
-    width: 100%;
+        "Criem juntos um plano para um encontro perfeito.",
 
-    border: none;
+        "Cada um fale sobre uma conquista do outro que admira.",
 
-    padding: 17px;
+        "Façam uma brincadeira de perguntas rápidas: cada um responde sem pensar muito.",
 
-    border-radius: 18px;
+        "Criem uma lista com três aventuras que gostariam de viver juntos.",
 
-    background: white;
+        "Terminem juntos a frase: 'Daqui a alguns anos, esperamos estar...'"
 
-    color: #e83e63;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.2s;
-}
+    ],
 
 
-button:hover {
-    transform: translateY(-2px);
-}
+
+/* =====================================
+   ROMÂNTICO PREMIUM
+===================================== */
+
+    romanticoPremium: [
+
+        "Diga uma qualidade da outra pessoa que você gostaria que ela nunca esquecesse.",
+
+        "Conte qual lembrança da relação mais aquece seu coração.",
+
+        "Descreva como seria um dia perfeito juntos.",
+
+        "Diga uma coisa simples que faz você se sentir valorizado.",
+
+        "Conte qual foi um momento em que você se sentiu muito feliz ao lado do outro.",
+
+        "Fale sobre um sonho que gostaria de construir juntos.",
+
+        "Diga uma coisa que você gostaria de fazer mais vezes juntos.",
+
+        "Conte qual lugar você gostaria de visitar em uma viagem a dois.",
+
+        "Cada um diga uma coisa que aprendeu com o outro.",
+
+        "Complete: 'Uma das melhores coisas da nossa história é...'"
+
+    ]
+
+};
 
 
-button:active {
-    transform: scale(0.97);
-}
+
+/* =====================================
+   CONFIGURAÇÕES
+===================================== */
+
+let categoriaAtual = "";
+
+let perguntaAtual = 0;
 
 
-/* PREMIUM */
+/*
+    Enquanto não houver integração
+    com a Google Play, o Premium
+    permanece bloqueado.
+*/
 
-.btn-premium {
-    margin-top: 15px;
-
-    background:
-        rgba(255, 255, 255, 0.18);
-
-    color: white;
-
-    border:
-        1px solid rgba(255, 255, 255, 0.5);
-}
+let premiumAtivo = false;
 
 
-.btn-premium-comprar {
-    background:
-        linear-gradient(
-            90deg,
-            #ffb300,
-            #ff416c
-        );
 
-    color: white;
+/* =====================================
+   ABRIR CATEGORIAS
+===================================== */
 
-    margin-top: 20px;
+function abrirCategorias() {
+
+    fecharModal();
+
+    esconderTelas();
+
+    document
+        .getElementById("categorias")
+        .classList.add("ativa");
+
 }
 
 
-/* CATEGORIAS */
 
-.categorias {
-    display: flex;
+/* =====================================
+   VERIFICAR PREMIUM
+===================================== */
 
-    flex-direction: column;
+function verificarPremium(categoria) {
 
-    gap: 15px;
+    if (premiumAtivo === true) {
 
-    margin-top: 25px;
-}
+        iniciarJogo(categoria);
 
+        return;
 
-.categoria-btn {
-    display: grid;
-
-    grid-template-columns:
-        40px 1fr auto;
-
-    align-items: center;
-
-    gap: 10px;
-
-    text-align: left;
-
-    padding: 18px;
-
-    background: white;
-
-    color: #333;
-
-    box-shadow:
-        0 8px 20px
-        rgba(0, 0, 0, 0.15);
-}
-
-
-.categoria-btn small {
-    font-size: 10px;
-
-    font-weight: bold;
-
-    color: #e83e63;
-}
-
-
-.premium-btn {
-    border:
-        2px solid #ffb300;
-}
-
-
-/* TOPO */
-
-.topo {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 20px;
-}
-
-
-#categoria {
-    background:
-        rgba(255, 255, 255, 0.2);
-
-    padding: 9px 14px;
-
-    border-radius: 20px;
-
-    font-size: 14px;
-
-    font-weight: bold;
-}
-
-
-#numero {
-    font-size: 14px;
-
-    font-weight: bold;
-}
-
-
-/* CARD */
-
-.card {
-    background: white;
-
-    color: #333;
-
-    border-radius: 25px;
-
-    padding: 30px 25px;
-
-    box-shadow:
-        0 15px 40px
-        rgba(0, 0, 0, 0.25);
-}
-
-
-.icone-pergunta {
-    font-size: 35px;
-
-    margin-bottom: 15px;
-}
-
-
-.card h2 {
-    min-height: 130px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 23px;
-
-    line-height: 1.45;
-}
-
-
-.btn-principal {
-    margin-top: 20px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff416c,
-            #8e2de2
-        );
-
-    color: white;
-}
-
-
-/* PREMIUM CARD */
-
-.premium-card h2 {
-    min-height: auto;
-
-    margin-bottom: 20px;
-}
-
-
-.premium-card ul {
-    list-style: none;
-
-    text-align: left;
-
-    line-height: 2;
-
-    font-size: 16px;
-}
-
-
-/* VOLTAR */
-
-.voltar {
-    margin-top: 20px;
-
-    background: transparent;
-
-    color: white;
-
-    border:
-        1px solid rgba(255, 255, 255, 0.5);
-}
-
-
-/* MODAL */
-
-.modal {
-    display: none;
-
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(0, 0, 0, 0.65);
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 25px;
-
-    z-index: 100;
-}
-
-
-.modal.ativo {
-    display: flex;
-}
-
-
-.modal-card {
-    width: 100%;
-
-    max-width: 400px;
-
-    background: white;
-
-    color: #333;
-
-    padding: 30px;
-
-    border-radius: 25px;
-
-    text-align: center;
-
-    box-shadow:
-        0 20px 50px
-        rgba(0, 0, 0, 0.4);
-}
-
-
-.modal-card p {
-    color: #555;
-
-    margin-top: 10px;
-}
-
-
-.fechar {
-    margin-top: 10px;
-
-    background: #eee;
-
-    color: #555;
-}
-
-
-/* ANIMAÇÕES */
-
-@keyframes pulsar {
-
-    0% {
-        transform: scale(1);
     }
 
-    50% {
-        transform: scale(1.12);
-    }
 
-    100% {
-        transform: scale(1);
-    }
+    document
+        .getElementById("modalPremium")
+        .classList.add("ativo");
 
 }
 
 
-@keyframes aparecer {
 
-    from {
-        opacity: 0;
+/* =====================================
+   ABRIR PREMIUM
+===================================== */
 
-        transform:
-            translateY(10px);
-    }
+function abrirPremium() {
 
-    to {
-        opacity: 1;
+    fecharModal();
 
-        transform:
-            translateY(0);
-    }
+    esconderTelas();
+
+    document
+        .getElementById("premium")
+        .classList.add("ativa");
 
 }
 
 
-/* CELULAR */
 
-@media (max-width: 400px) {
+/* =====================================
+   FECHAR MODAL
+===================================== */
 
-    .app {
-        padding: 18px;
+function fecharModal() {
+
+    document
+        .getElementById("modalPremium")
+        .classList.remove("ativo");
+
+}
+
+
+
+/* =====================================
+   FUTURA COMPRA PREMIUM
+===================================== */
+
+function assinarPremium() {
+
+    alert(
+        "O sistema de assinatura será conectado à Google Play na versão final."
+    );
+
+}
+
+
+
+/* =====================================
+   INICIAR JOGO
+===================================== */
+
+function iniciarJogo(categoria) {
+
+    categoriaAtual = categoria;
+
+    perguntaAtual = 0;
+
+    esconderTelas();
+
+    document
+        .getElementById("jogo")
+        .classList.add("ativa");
+
+    mostrarPergunta();
+
+}
+
+
+
+/* =====================================
+   MOSTRAR PERGUNTA
+===================================== */
+
+function mostrarPergunta() {
+
+    const lista =
+        perguntas[categoriaAtual];
+
+
+    document
+        .getElementById("categoria")
+        .textContent =
+        nomeCategoria(categoriaAtual);
+
+
+    document
+        .getElementById("numero")
+        .textContent =
+        `${perguntaAtual + 1}/${lista.length}`;
+
+
+    document
+        .getElementById("pergunta")
+        .textContent =
+        lista[perguntaAtual];
+
+}
+
+
+
+/* =====================================
+   PRÓXIMA PERGUNTA
+===================================== */
+
+function proximaPergunta() {
+
+    const lista =
+        perguntas[categoriaAtual];
+
+
+    perguntaAtual++;
+
+
+    if (perguntaAtual >= lista.length) {
+
+        esconderTelas();
+
+        document
+            .getElementById("resultado")
+            .classList.add("ativa");
+
+        return;
+
     }
 
-    h1 {
-        font-size: 34px;
-    }
 
-    .card {
-        padding: 25px 20px;
-    }
+    mostrarPergunta();
 
-    .card h2 {
-        font-size: 20px;
-    }
+}
+
+
+
+/* =====================================
+   NOME DA CATEGORIA
+===================================== */
+
+function nomeCategoria(categoria) {
+
+    const nomes = {
+
+        conhecendo:
+            "💕 Conhecendo vocês",
+
+        diversao:
+            "😂 Diversão",
+
+        desafiosPremium:
+            "🎮 Desafios Premium",
+
+        romanticoPremium:
+            "❤️ Romântico Premium"
+
+    };
+
+
+    return nomes[categoria];
+
+}
+
+
+
+/* =====================================
+   VOLTAR AO INÍCIO
+===================================== */
+
+function voltarInicio() {
+
+    fecharModal();
+
+    esconderTelas();
+
+    document
+        .getElementById("inicio")
+        .classList.add("ativa");
+
+    perguntaAtual = 0;
+
+    categoriaAtual = "";
+
+}
+
+
+
+/* =====================================
+   ESCONDER TELAS
+===================================== */
+
+function esconderTelas() {
+
+    const telas =
+        document.querySelectorAll(".tela");
+
+
+    telas.forEach(
+        function(tela) {
+
+            tela.classList.remove("ativa");
+
+        }
+    );
 
 }
 ```
