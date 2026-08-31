@@ -1,0 +1,63 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Só Nós Dois ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app">
+
+        <!-- TELA INICIAL -->
+        <section id="inicio" class="tela ativa">
+            <div class="coracao">❤️</div>
+
+            <h1>Só Nós Dois</h1>
+
+            <p>
+                Um jogo feito para vocês dois.
+            </p>
+
+            <button onclick="iniciarJogo()">
+                Começar ❤️
+            </button>
+        </section>
+
+
+        <!-- TELA DO JOGO -->
+        <section id="jogo" class="tela">
+
+            <div class="topo">
+                <span id="categoria">Categoria</span>
+                <span id="numero">1</span>
+            </div>
+
+            <div class="card">
+
+                <h2 id="pergunta">
+                    Pergunta
+                </h2>
+
+                <button onclick="proximaPergunta()">
+                    Próxima ❤️
+                </button>
+
+            </div>
+
+            <button class="voltar" onclick="voltarInicio()">
+                Voltar
+            </button>
+
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
