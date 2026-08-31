@@ -3,46 +3,81 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Só Nós Dois ❤️</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css">
+
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- TELA INICIAL -->
-    <section id="inicio" class="tela ativa">
 
-        <div class="coracao">❤️</div>
+    <!-- =========================
+         TELA INICIAL
+    ========================== -->
 
-        <h1>Só Nós Dois</h1>
+    <section
+        id="inicio"
+        class="tela ativa">
+
+        <div class="coracao">
+            ❤️
+        </div>
+
+        <h1>
+            Só Nós Dois
+        </h1>
 
         <p>
-            Um jogo feito para vocês dois.
+            Um jogo feito para criar
+            momentos especiais.
         </p>
 
-        <button onclick="abrirCategorias()">
+        <button
+            onclick="abrirCategorias()">
+
             Começar ❤️
+
         </button>
 
-        <button class="btn-premium" onclick="abrirPremium()">
+        <button
+            class="btn-premium"
+            onclick="abrirPremium()">
+
             ⭐ Conheça o Premium
+
         </button>
 
     </section>
 
 
-    <!-- CATEGORIAS -->
-    <section id="categorias" class="tela">
 
-        <div class="coracao pequeno">❤️</div>
+    <!-- =========================
+         CATEGORIAS
+    ========================== -->
 
-        <h1>Escolha o jogo</h1>
+    <section
+        id="categorias"
+        class="tela">
+
+        <div class="coracao pequeno">
+            ❤️
+        </div>
+
+        <h1>
+            Escolha o jogo
+        </h1>
 
         <p>
             Escolha uma categoria.
@@ -51,16 +86,24 @@
 
         <div class="categorias">
 
-            <!-- GRATUITAS -->
+
+            <!-- GRÁTIS -->
 
             <button
                 class="categoria-btn"
                 onclick="iniciarJogo('conhecendo')">
 
-                💕
-                <span>Conhecendo vocês</span>
+                <span class="emoji">
+                    💕
+                </span>
 
-                <small>GRÁTIS</small>
+                <span>
+                    Conhecendo vocês
+                </span>
+
+                <small>
+                    GRÁTIS
+                </small>
 
             </button>
 
@@ -69,10 +112,17 @@
                 class="categoria-btn"
                 onclick="iniciarJogo('diversao')">
 
-                😂
-                <span>Diversão</span>
+                <span class="emoji">
+                    😂
+                </span>
 
-                <small>GRÁTIS</small>
+                <span>
+                    Diversão
+                </span>
+
+                <small>
+                    GRÁTIS
+                </small>
 
             </button>
 
@@ -81,24 +131,38 @@
 
             <button
                 class="categoria-btn premium-btn"
-                onclick="verificarPremium('desafios')">
+                onclick="verificarPremium('desafiosPremium')">
 
-                🎮
-                <span>Desafios</span>
+                <span class="emoji">
+                    🎮
+                </span>
 
-                <small>⭐ PREMIUM</small>
+                <span>
+                    Desafios Premium
+                </span>
+
+                <small>
+                    ⭐ PREMIUM
+                </small>
 
             </button>
 
 
             <button
                 class="categoria-btn premium-btn"
-                onclick="verificarPremium('romantico')">
+                onclick="verificarPremium('romanticoPremium')">
 
-                ❤️
-                <span>Romântico</span>
+                <span class="emoji">
+                    ❤️
+                </span>
 
-                <small>⭐ PREMIUM</small>
+                <span>
+                    Romântico Premium
+                </span>
+
+                <small>
+                    ⭐ PREMIUM
+                </small>
 
             </button>
 
@@ -116,8 +180,14 @@
     </section>
 
 
-    <!-- TELA DO JOGO -->
-    <section id="jogo" class="tela">
+
+    <!-- =========================
+         JOGO
+    ========================== -->
+
+    <section
+        id="jogo"
+        class="tela">
 
         <div class="topo">
 
@@ -134,19 +204,23 @@
 
         <div class="card">
 
-            <div class="icone-pergunta">
+            <div
+                class="icone-pergunta">
+
                 ❤️
+
             </div>
 
             <h2 id="pergunta">
                 Pergunta
             </h2>
 
+
             <button
                 class="btn-principal"
                 onclick="proximaPergunta()">
 
-                Próxima ❤️
+                Próximo ❤️
 
             </button>
 
@@ -164,35 +238,57 @@
     </section>
 
 
-    <!-- TELA PREMIUM -->
-    <section id="premium" class="tela">
+
+    <!-- =========================
+         PREMIUM
+    ========================== -->
+
+    <section
+        id="premium"
+        class="tela">
 
         <div class="premium-icon">
             ⭐
         </div>
 
-        <h1>Premium</h1>
+        <h1>
+            Só Nós Dois Premium
+        </h1>
 
         <p>
-            Desbloqueie uma experiência ainda mais completa.
+            Desbloqueie conteúdos
+            exclusivos para vocês.
         </p>
 
 
         <div class="card premium-card">
 
             <h2>
-                ⭐ Só Nós Dois Premium
+                ⭐ Premium
             </h2>
+
 
             <ul>
 
-                <li>💕 Mais perguntas</li>
+                <li>
+                    🎮 20 desafios exclusivos
+                </li>
 
-                <li>🎮 Novos desafios</li>
+                <li>
+                    ❤️ Perguntas românticas
+                </li>
 
-                <li>❤️ Categorias especiais</li>
+                <li>
+                    💕 Mais momentos de conexão
+                </li>
 
-                <li>✨ Conteúdos exclusivos</li>
+                <li>
+                    ✨ Conteúdo exclusivo
+                </li>
+
+                <li>
+                    🔓 Acesso às categorias Premium
+                </li>
 
             </ul>
 
@@ -219,17 +315,25 @@
     </section>
 
 
-    <!-- RESULTADO -->
-    <section id="resultado" class="tela">
+
+    <!-- =========================
+         RESULTADO
+    ========================== -->
+
+    <section
+        id="resultado"
+        class="tela">
 
         <div class="coracao">
             🎉
         </div>
 
-        <h1>Parabéns!</h1>
+        <h1>
+            Parabéns!
+        </h1>
 
         <p>
-            Vocês completaram essa rodada.
+            Vocês terminaram essa rodada.
         </p>
 
 
@@ -240,7 +344,8 @@
             </div>
 
             <h2>
-                Mais um momento especial compartilhado por vocês.
+                Mais um momento especial
+                compartilhado por vocês.
             </h2>
 
             <button
@@ -256,9 +361,14 @@
     </section>
 
 
-    <!-- MODAL PREMIUM -->
 
-    <div id="modalPremium" class="modal">
+    <!-- =========================
+         MODAL PREMIUM
+    ========================== -->
+
+    <div
+        id="modalPremium"
+        class="modal">
 
         <div class="modal-card">
 
@@ -271,16 +381,19 @@
             </h2>
 
             <p>
-                Essa categoria está disponível no Premium.
+                Essa categoria é exclusiva
+                para assinantes Premium.
             </p>
+
 
             <button
                 class="btn-premium-comprar"
                 onclick="abrirPremium()">
 
-                ⭐ Conhecer Premium
+                ⭐ Ver Premium
 
             </button>
+
 
             <button
                 class="fechar"
