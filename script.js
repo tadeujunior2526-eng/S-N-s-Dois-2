@@ -1,339 +1,217 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+const perguntas = {
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
+    conhecendo: [
+        "Qual foi o momento em que você percebeu que gostava de mim?",
 
-    min-height: 100vh;
+        "Qual lembrança nossa você gostaria de reviver?",
 
-    background:
-        linear-gradient(
-            135deg,
-            #ff416c,
-            #8e2de2
-        );
+        "Qual é uma coisa que você admira em mim?",
 
-    color: white;
+        "O que você acha que torna nossa história especial?",
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        "Qual foi um dos momentos mais engraçados que vivemos juntos?",
+
+        "Qual lugar você gostaria de conhecer comigo?",
+
+        "Qual coisa simples que fazemos juntos você mais gosta?"
+    ],
 
 
-.app {
-    width: 100%;
-    max-width: 480px;
+    diversao: [
+        "Quem dos dois é mais provável de começar uma dança do nada?",
 
-    min-height: 100vh;
+        "Se pudéssemos viajar amanhã, para onde você iria comigo?",
 
-    padding: 25px;
+        "Qual filme ou série combina com a nossa história?",
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        "Quem dos dois provavelmente faria a maior besteira durante uma viagem?",
 
+        "Se nossa história fosse um filme, qual seria o título?",
 
-.tela {
-    display: none;
+        "Quem dos dois demora mais para escolher o que assistir?",
 
-    width: 100%;
-
-    text-align: center;
-
-    animation: aparecer 0.4s ease;
-}
+        "Se tivéssemos um dia inteiro livre, o que você gostaria de fazer?"
+    ],
 
 
-.tela.ativa {
-    display: block;
-}
+    desafios: [
+        "Faça um elogio sincero para a outra pessoa.",
+
+        "Conte uma coisa que você gostaria de fazer junto comigo.",
+
+        "Fiquem alguns segundos olhando um para o outro sem falar.",
+
+        "Cada um conte uma coisa engraçada que lembra do outro.",
+
+        "Imite uma mania divertida da outra pessoa.",
+
+        "Conte uma história nossa que sempre faz você sorrir.",
+
+        "Cada um diga uma qualidade que admira no outro."
+    ],
 
 
-/* INÍCIO */
+    romantico: [
+        "Diga uma coisa que faz você se sentir especial ao meu lado.",
 
-.coracao {
-    font-size: 75px;
+        "Qual seria o encontro perfeito para nós dois?",
 
-    margin-bottom: 20px;
+        "Complete: nossa história é especial porque...",
 
-    animation: pulsar 1.5s infinite;
-}
+        "Qual momento nosso você guarda com carinho?",
 
+        "O que você mais gosta nos momentos que passamos juntos?",
 
-.coracao.pequeno {
-    font-size: 45px;
+        "Qual sonho você gostaria de realizar ao meu lado?",
 
-    margin-bottom: 5px;
-}
+        "Diga uma coisa pela qual você é grato na nossa história."
+    ]
 
-
-h1 {
-    font-size: 40px;
-
-    margin-bottom: 10px;
-}
+};
 
 
-p {
-    font-size: 17px;
+let categoriaAtual = "";
 
-    line-height: 1.5;
+let perguntaAtual = 0;
 
-    opacity: 0.9;
 
-    margin-bottom: 30px;
+/* ABRIR CATEGORIAS */
+
+function abrirCategorias() {
+
+    esconderTelas();
+
+    document
+        .getElementById("categorias")
+        .classList.add("ativa");
 }
 
 
-/* BOTÕES */
+/* INICIAR JOGO */
 
-button {
-    width: 100%;
+function iniciarJogo(categoria) {
 
-    border: none;
+    categoriaAtual = categoria;
 
-    padding: 17px;
+    perguntaAtual = 0;
 
-    border-radius: 18px;
+    esconderTelas();
 
-    background: white;
+    document
+        .getElementById("jogo")
+        .classList.add("ativa");
 
-    color: #e83e63;
-
-    font-size: 18px;
-
-    font-weight: bold;
-
-    cursor: pointer;
-
-    transition: 0.2s;
+    mostrarPergunta();
 }
 
 
-button:hover {
-    transform: translateY(-2px);
+/* MOSTRAR PERGUNTA */
+
+function mostrarPergunta() {
+
+    const lista =
+        perguntas[categoriaAtual];
+
+
+    document
+        .getElementById("categoria")
+        .textContent =
+        nomeCategoria(categoriaAtual);
+
+
+    document
+        .getElementById("numero")
+        .textContent =
+        `${perguntaAtual + 1}/${lista.length}`;
+
+
+    document
+        .getElementById("pergunta")
+        .textContent =
+        lista[perguntaAtual];
 }
 
 
-button:active {
-    transform: scale(0.97);
-}
+/* PRÓXIMA PERGUNTA */
 
+function proximaPergunta() {
 
-/* CATEGORIAS */
+    const lista =
+        perguntas[categoriaAtual];
 
-.categorias {
-    display: flex;
 
-    flex-direction: column;
+    perguntaAtual++;
 
-    gap: 15px;
 
-    margin-top: 25px;
-}
+    if (perguntaAtual >= lista.length) {
 
+        esconderTelas();
 
-.categoria-btn {
-    display: flex;
+        document
+            .getElementById("resultado")
+            .classList.add("ativa");
 
-    align-items: center;
-
-    justify-content: flex-start;
-
-    gap: 15px;
-
-    text-align: left;
-
-    padding: 18px 20px;
-
-    background: rgba(255, 255, 255, 0.96);
-
-    color: #333;
-
-    box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-
-.categoria-btn span {
-    font-size: 17px;
-}
-
-
-/* TOPO DO JOGO */
-
-.topo {
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    margin-bottom: 20px;
-}
-
-
-#categoria {
-    background:
-        rgba(255, 255, 255, 0.2);
-
-    padding: 9px 14px;
-
-    border-radius: 20px;
-
-    font-size: 14px;
-
-    font-weight: bold;
-}
-
-
-#numero {
-    font-size: 14px;
-
-    font-weight: bold;
-}
-
-
-/* CARD */
-
-.card {
-    background: white;
-
-    color: #333;
-
-    border-radius: 25px;
-
-    padding: 30px 25px;
-
-    box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.25);
-}
-
-
-.icone-pergunta {
-    font-size: 35px;
-
-    margin-bottom: 15px;
-}
-
-
-.card h2 {
-    min-height: 150px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    font-size: 23px;
-
-    line-height: 1.45;
-}
-
-
-.btn-principal {
-    margin-top: 20px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #ff416c,
-            #8e2de2
-        );
-
-    color: white;
-}
-
-
-/* BOTÃO VOLTAR */
-
-.voltar {
-    margin-top: 20px;
-
-    background:
-        transparent;
-
-    color: white;
-
-    border:
-        1px solid rgba(255, 255, 255, 0.5);
-}
-
-
-/* RESULTADO */
-
-.resultado-card {
-    margin-top: 25px;
-}
-
-
-.resultado-card h2 {
-    min-height: 100px;
-}
-
-
-/* ANIMAÇÕES */
-
-@keyframes pulsar {
-
-    0% {
-        transform: scale(1);
+        return;
     }
 
-    50% {
-        transform: scale(1.12);
-    }
 
-    100% {
-        transform: scale(1);
-    }
-
+    mostrarPergunta();
 }
 
 
-@keyframes aparecer {
+/* NOMES DAS CATEGORIAS */
 
-    from {
-        opacity: 0;
+function nomeCategoria(categoria) {
 
-        transform:
-            translateY(10px);
-    }
+    const nomes = {
 
-    to {
-        opacity: 1;
+        conhecendo:
+            "💕 Conhecendo vocês",
 
-        transform:
-            translateY(0);
-    }
+        diversao:
+            "😂 Diversão",
 
+        desafios:
+            "🎮 Desafios",
+
+        romantico:
+            "❤️ Romântico"
+
+    };
+
+
+    return nomes[categoria];
 }
 
 
-/* CELULAR */
+/* VOLTAR PARA INÍCIO */
 
-@media (max-width: 400px) {
+function voltarInicio() {
 
-    .app {
-        padding: 18px;
-    }
+    esconderTelas();
 
-    h1 {
-        font-size: 34px;
-    }
+    document
+        .getElementById("inicio")
+        .classList.add("ativa");
 
-    .card {
-        padding: 25px 20px;
-    }
+    perguntaAtual = 0;
 
-    .card h2 {
-        font-size: 20px;
-    }
+    categoriaAtual = "";
+}
+
+
+/* ESCONDER TODAS AS TELAS */
+
+function esconderTelas() {
+
+    const telas =
+        document.querySelectorAll(".tela");
+
+
+    telas.forEach(function(tela) {
+
+        tela.classList.remove("ativa");
+
+    });
 
 }
