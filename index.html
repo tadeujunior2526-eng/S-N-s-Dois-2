@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -15,7 +14,7 @@
 
     <div class="app">
 
-        <!-- INÍCIO -->
+        <!-- TELA INICIAL -->
         <section id="inicio" class="tela ativa">
 
             <div class="coracao">❤️</div>
@@ -36,38 +35,75 @@
         <!-- CATEGORIAS -->
         <section id="categorias" class="tela">
 
-            <h1>Escolha o jogo</h1>
+            <div class="cabecalho">
 
-            <p>Que tal começar?</p>
+                <div class="coracao pequeno">
+                    ❤️
+                </div>
+
+                <h1>Escolha o jogo</h1>
+
+                <p>
+                    Escolha uma categoria para começar.
+                </p>
+
+            </div>
 
             <div class="categorias">
 
-                <button onclick="iniciarJogo('conhecendo')">
-                    💕 Conhecendo vocês
+                <button
+                    class="categoria-btn"
+                    onclick="iniciarJogo('conhecendo')">
+
+                    💕
+                    <span>Conhecendo vocês</span>
+
                 </button>
 
-                <button onclick="iniciarJogo('diversao')">
-                    😂 Diversão
+
+                <button
+                    class="categoria-btn"
+                    onclick="iniciarJogo('diversao')">
+
+                    😂
+                    <span>Diversão</span>
+
                 </button>
 
-                <button onclick="iniciarJogo('desafios')">
-                    🎮 Desafios
+
+                <button
+                    class="categoria-btn"
+                    onclick="iniciarJogo('desafios')">
+
+                    🎮
+                    <span>Desafios</span>
+
                 </button>
 
-                <button onclick="iniciarJogo('romantico')">
-                    ❤️ Romântico
+
+                <button
+                    class="categoria-btn"
+                    onclick="iniciarJogo('romantico')">
+
+                    ❤️
+                    <span>Romântico</span>
+
                 </button>
 
             </div>
 
-            <button class="voltar" onclick="voltarInicio()">
-                Voltar
+            <button
+                class="voltar"
+                onclick="voltarInicio()">
+
+                ← Voltar
+
             </button>
 
         </section>
 
 
-        <!-- JOGO -->
+        <!-- TELA DO JOGO -->
         <section id="jogo" class="tela">
 
             <div class="topo">
@@ -82,29 +118,89 @@
 
             </div>
 
+
             <div class="card">
+
+                <div class="icone-pergunta">
+                    ❤️
+                </div>
 
                 <h2 id="pergunta">
                     Pergunta
                 </h2>
 
-                <button onclick="proximaPergunta()">
+                <button
+                    class="btn-principal"
+                    onclick="proximaPergunta()">
+
                     Próxima ❤️
+
                 </button>
 
             </div>
 
-            <button class="voltar" onclick="abrirCategorias()">
-                Escolher outra categoria
+
+            <button
+                class="voltar"
+                onclick="abrirCategorias()">
+
+                ← Escolher outra categoria
+
+            </button>
+
+        </section>
+
+
+        <!-- RESULTADO -->
+        <section id="resultado" class="tela">
+
+            <div class="coracao">
+                🎉
+            </div>
+
+            <h1>Parabéns!</h1>
+
+            <p>
+                Vocês completaram essa rodada.
+            </p>
+
+
+            <div class="card resultado-card">
+
+                <div class="icone-pergunta">
+                    ❤️
+                </div>
+
+                <h2>
+                    Mais um momento compartilhado por vocês.
+                </h2>
+
+                <button
+                    class="btn-principal"
+                    onclick="abrirCategorias()">
+
+                    Jogar novamente
+
+                </button>
+
+            </div>
+
+
+            <button
+                class="voltar"
+                onclick="voltarInicio()">
+
+                Página inicial
+
             </button>
 
         </section>
 
     </div>
 
+
     <script src="script.js"></script>
 
 </body>
 
 </html>
-```
